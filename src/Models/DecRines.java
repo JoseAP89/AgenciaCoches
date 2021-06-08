@@ -9,23 +9,25 @@ package Models;
  *
  * @author Salvador Solis Atenco
  */
-public class AutomovilPickUp implements IAutomovil{
-    
-    Automovil auto;
+public class DecRines extends DecoradorEquipamiento{
 
-    public AutomovilPickUp(Automovil auto) {
-        this.auto = auto;
+    public DecRines(IAutomovil AutoDecorado) {
+        super(AutoDecorado);
     }
-    
 
     @Override
     public String ordenarAuto() {
-        return "Automovil tipo PickUp";
+        agregarRines();
+        return AutoDecorado.ordenarAuto()+", se agregan rines";
     }
-
+    
     @Override
     public double cost() {
-        return 526800.00;
+        return 7370.00 + AutoDecorado.cost();
+    }
+
+    private void agregarRines() {
+        System.out.println("Se agregaron rines");
     }
     
 }

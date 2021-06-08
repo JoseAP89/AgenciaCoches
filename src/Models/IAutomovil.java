@@ -10,5 +10,6 @@ package Models;
  * @author Salvador Solis Atenco
  */
 public interface IAutomovil {
-    public void ordenarAuto(Automovil auto);
+    public String ordenarAuto();
+    public abstract double cost();
 }

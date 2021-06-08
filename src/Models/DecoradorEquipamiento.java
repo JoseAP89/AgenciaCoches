@@ -17,8 +17,6 @@ public abstract class DecoradorEquipamiento implements IAutomovil {
     }
     
     @Override
-    public void ordenarAuto(Automovil auto){
-        this.AutoDecorado.ordenarAuto(auto);
-    }
+    public abstract String ordenarAuto();
     
 }

@@ -10,10 +10,21 @@ package Models;
  * @author Salvador Solis Atenco
  */
 public class AutomovilSedan implements IAutomovil{
+    
+    Automovil auto;
+
+    public AutomovilSedan(Automovil auto) {
+        this.auto = auto;
+    }
 
     @Override
-    public void ordenarAuto(Automovil auto) {
-        System.out.println("Se ordeno un auto tipo Sedan");
+    public String ordenarAuto() {
+        return "Automovil tipo Sedan";
+    }
+
+    @Override
+    public double cost() {
+        return 271900.00;
     }
     
 }
