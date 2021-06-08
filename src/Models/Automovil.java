@@ -1,15 +1,44 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Modelo de automovil
+ * 
+ * 
  */
 package Models;
 
 /**
  *
- * @author joseap
+ * @author Salvador Solis Atenco
  */
 public class Automovil {
-    String color;
+    int num_serie;
     String marca;
+    String modelo;
+
+    public Automovil() {
+    }
+
+    public int getNum_serie() {
+        return num_serie;
+    }
+
+    public void setNum_serie(int num_serie) {
+        this.num_serie = num_serie;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
 }
