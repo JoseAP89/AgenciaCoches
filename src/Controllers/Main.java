@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package Controllers;
-
+import Models.*;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import java.util.Formatter;
+import java.util.Locale;
 /**
  *
  * @author joseap
@@ -16,6 +20,12 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        automoviles = DBReader.getVehicles();
+        for (Automovil automovile : automoviles) {
+            System.out.println(automovile);
+        }
+        initAutomovileBox();
+        baseCostLbl.setVisible(false);
     }
 
     /**
@@ -27,21 +37,118 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        vehicleTab = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        chooseVehicleLbl = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        vehicleBox = new javax.swing.JComboBox<>();
+        baseCostLbl = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        chooseVehicleLbl.setText("Elije el vehiculo que deseas");
+
+        jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        vehicleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vehicleBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleBoxActionPerformed(evt);
+            }
+        });
+
+        baseCostLbl.setText("Costo base: $ 0.00");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(chooseVehicleLbl)
+                    .addComponent(jButton1)
+                    .addComponent(vehicleBox, 0, 233, Short.MAX_VALUE)
+                    .addComponent(baseCostLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(443, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chooseVehicleLbl)
+                .addGap(27, 27, 27)
+                .addComponent(vehicleBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jButton1)
+                .addGap(31, 31, 31)
+                .addComponent(baseCostLbl)
+                .addContainerGap(185, Short.MAX_VALUE))
+        );
+
+        vehicleTab.addTab("Elejir", jPanel2);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 688, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 387, Short.MAX_VALUE)
+        );
+
+        vehicleTab.addTab("Modificar", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(vehicleTab)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(vehicleTab)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void initAutomovileBox() {
+        Automovil noCar = new Automovil("0","Seleccione un vehiculo");
+        automoviles.add(0, noCar);
+        vehicleBox.setModel(new DefaultComboBoxModel<>(automoviles.toArray()));
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void vehicleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleBoxActionPerformed
+        selectedVehicle = (Automovil)vehicleBox.getSelectedItem();
+        if (selectedVehicle!=null && !selectedVehicle.seriesNumber.equals("0")) {
+            baseCostLbl.setVisible(true);
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", selectedVehicle.getPrice());
+            baseCostLbl.setText("Costo base: " + sb);
+        } else {
+            baseCostLbl.setVisible(false);
+        }
+    }//GEN-LAST:event_vehicleBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +184,17 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    // variables
+    private ArrayList<Automovil> automoviles;
+    Automovil selectedVehicle;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel baseCostLbl;
+    private javax.swing.JLabel chooseVehicleLbl;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JComboBox<Object> vehicleBox;
+    private javax.swing.JTabbedPane vehicleTab;
     // End of variables declaration//GEN-END:variables
 }
