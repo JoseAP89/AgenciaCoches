@@ -17,7 +17,6 @@ public class DecFrontAssist  extends DecoradorEquipamiento{
     
     @Override
     public String ordenarAuto() {
-        descipcionFrontAssist();
         return AutoDecorado.ordenarAuto()+", equipamiento de FrontAssist";
     }
 
@@ -26,13 +25,13 @@ public class DecFrontAssist  extends DecoradorEquipamiento{
         return this.getPrecioEquipamiento() +  AutoDecorado.cost();
     }
 
-    public void descipcionFrontAssist() {
-        System.out.println("DecFrontAssist , este asistente controla la distancia con el vehículo que nos precede por medio de un radar instalado en el paragolpes delantero y es capaz de frenar ante una situación de riesgo por colisión");
+    public String getDescripcionEquipamiento() {
+        return "Monitorea la distancia con el vehículo que nos precede para evitar colisiones." ;
     }
 
     @Override
     public String getNombreEquipamiento() {
-        return "FrontAssist"; 
+        return "Asistente-Frontal"; 
     }
 
     @Override

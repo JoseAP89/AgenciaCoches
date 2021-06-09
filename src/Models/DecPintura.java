@@ -17,12 +17,7 @@ public class DecPintura extends DecoradorEquipamiento{
 
     @Override
     public String ordenarAuto() {
-        descripcionPintura();
         return AutoDecorado.ordenarAuto() + ", Pintura";
-    }
-
-    public void descripcionPintura() {
-        System.out.println("Se ordeno agregar pintura personalizada");   
     }
 
     @Override
@@ -32,12 +27,18 @@ public class DecPintura extends DecoradorEquipamiento{
 
     @Override
     public String getNombreEquipamiento() {
-        return "Pintura";
+        return "Pintado";
     }
 
     @Override
     public double getPrecioEquipamiento() {
         return 12000.00;
+    }
+
+
+    @Override
+    public String getDescripcionEquipamiento() {
+       return "Pintado personalizado del vehículo.";
     }
     
     

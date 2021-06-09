@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package View;
-
+import Models.*;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import java.util.Formatter;
+import java.util.Locale;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author joseap
@@ -16,6 +22,16 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        automoviles = DBReader.getVehicles();
+        decorators = new ArrayList<>();
+        initAutomovileBox();
+        baseCostLbl.setVisible(false);
+        thanksImg.setVisible(false);
+        billLbl.setVisible(false);
+        billTable.setVisible(false);
+        totalBillLbl.setVisible(false);
+        totalAdicionesLbl.setVisible(false);
+        buyBtn.setEnabled(false);
     }
 
     /**
@@ -27,22 +43,551 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        vehicleTab = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        chooseVehicleLbl = new javax.swing.JLabel();
+        vehicleBox = new javax.swing.JComboBox<>();
+        baseCostLbl = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        insuranceCheckBox = new javax.swing.JCheckBox();
+        parkAssistantCheckBox = new javax.swing.JCheckBox();
+        hubCapCheckBox = new javax.swing.JCheckBox();
+        paintCheckBox = new javax.swing.JCheckBox();
+        navigatorCheckBox = new javax.swing.JCheckBox();
+        cam360CheckBox = new javax.swing.JCheckBox();
+        frontAssistCheckBox = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        aditionalCostTable = new javax.swing.JTable();
+        totalAdicionesLbl = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        buyBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        billTable = new javax.swing.JTable();
+        billLbl = new javax.swing.JLabel();
+        totalBillLbl = new javax.swing.JLabel();
+        thanksImg = new javax.swing.JLabel();
+        cleanBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        chooseVehicleLbl.setText("Elije el vehiculo que deseas");
+
+        vehicleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vehicleBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleBoxActionPerformed(evt);
+            }
+        });
+
+        baseCostLbl.setText("Costo base: $ 0.00");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(chooseVehicleLbl)
+                            .addComponent(vehicleBox, 0, 233, Short.MAX_VALUE)
+                            .addComponent(baseCostLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(326, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chooseVehicleLbl)
+                .addGap(27, 27, 27)
+                .addComponent(vehicleBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(baseCostLbl)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addGap(34, 34, 34))
+        );
+
+        vehicleTab.addTab("Elejir", jPanel2);
+
+        jLabel1.setText("Elija los componentes adicionales de su vehículo");
+
+        insuranceCheckBox.setText("Seguro");
+        insuranceCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insuranceCheckBoxActionPerformed(evt);
+            }
+        });
+
+        parkAssistantCheckBox.setText("Asistente digital de estacionado");
+        parkAssistantCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parkAssistantCheckBoxActionPerformed(evt);
+            }
+        });
+
+        hubCapCheckBox.setText("Rines personalizados");
+        hubCapCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hubCapCheckBoxActionPerformed(evt);
+            }
+        });
+
+        paintCheckBox.setText("Pintado personalizado");
+        paintCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paintCheckBoxActionPerformed(evt);
+            }
+        });
+
+        navigatorCheckBox.setText("Navegador");
+        navigatorCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navigatorCheckBoxActionPerformed(evt);
+            }
+        });
+
+        cam360CheckBox.setText("Cámara 360°");
+        cam360CheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cam360CheckBoxActionPerformed(evt);
+            }
+        });
+
+        frontAssistCheckBox.setText("Asistente Frontal");
+        frontAssistCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontAssistCheckBoxActionPerformed(evt);
+            }
+        });
+
+        aditionalCostTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Concepto", "Descripción", "Costo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(aditionalCostTable);
+
+        totalAdicionesLbl.setText("Total de adiciones: 0.00");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(insuranceCheckBox)
+                                    .addComponent(hubCapCheckBox))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(parkAssistantCheckBox)
+                                    .addComponent(paintCheckBox))
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(navigatorCheckBox)
+                                    .addComponent(cam360CheckBox)))
+                            .addComponent(frontAssistCheckBox)
+                            .addComponent(totalAdicionesLbl))
+                        .addGap(0, 153, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insuranceCheckBox)
+                    .addComponent(parkAssistantCheckBox)
+                    .addComponent(navigatorCheckBox))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cam360CheckBox)
+                    .addComponent(paintCheckBox)
+                    .addComponent(hubCapCheckBox))
+                .addGap(18, 18, 18)
+                .addComponent(frontAssistCheckBox)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(totalAdicionesLbl)
+                .addGap(20, 20, 20))
+        );
+
+        vehicleTab.addTab("Adiciones", jPanel1);
+
+        jLabel2.setText("Realizar compra");
+
+        buyBtn.setText("Comprar");
+        buyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyBtnActionPerformed(evt);
+            }
+        });
+
+        billTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(billTable);
+
+        billLbl.setText("Factura de compra");
+
+        totalBillLbl.setText("Total: $ 0.00");
+
+        thanksImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/thanks.png"))); // NOI18N
+
+        cleanBtn.setText("Limpiar");
+        cleanBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalBillLbl)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(buyBtn)
+                                .addGap(17, 17, 17)
+                                .addComponent(cleanBtn)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(thanksImg))
+                    .addComponent(billLbl))
+                .addContainerGap(313, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buyBtn)
+                            .addComponent(cleanBtn)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(thanksImg, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
+                .addComponent(billLbl)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(totalBillLbl)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        vehicleTab.addTab("Comprar", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(vehicleTab)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(vehicleTab)
+                .addGap(11, 11, 11))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void vehicleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleBoxActionPerformed
+        selectedVehicle = (IAutomovil)vehicleBox.getSelectedItem();
+        if (selectedVehicle!=null && !selectedVehicle.getSerie().equals("0")) {
+            baseCostLbl.setVisible(true);
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", selectedVehicle.getPrecioBase());
+            baseCostLbl.setText("Costo base: " + sb);
+            buyBtn.setEnabled(true);
+        } else {
+            baseCostLbl.setVisible(false);
+            buyBtn.setEnabled(false);
+            thanksImg.setVisible(false);
+        }
+    }//GEN-LAST:event_vehicleBoxActionPerformed
+
+    private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
+        selectedVehicle = (IAutomovil)vehicleBox.getSelectedItem();
+        thanksImg.setVisible(true);
+        billLbl.setVisible(true);
+        billTable.setVisible(true);
+        totalBillLbl.setVisible(true);
+        getBillTable();
+    }//GEN-LAST:event_buyBtnActionPerformed
+
+    private void insuranceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insuranceCheckBoxActionPerformed
+        boolean isSelected = insuranceCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecSeguro(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("seguro"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_insuranceCheckBoxActionPerformed
+
+    private void parkAssistantCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkAssistantCheckBoxActionPerformed
+        boolean isSelected = parkAssistantCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecParkAssist(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("park-assist"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_parkAssistantCheckBoxActionPerformed
+
+    private void navigatorCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navigatorCheckBoxActionPerformed
+        boolean isSelected = navigatorCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecNavegador(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("navegador"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_navigatorCheckBoxActionPerformed
+
+    private void hubCapCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hubCapCheckBoxActionPerformed
+        boolean isSelected = hubCapCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecRines(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("rines"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_hubCapCheckBoxActionPerformed
+
+    private void paintCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paintCheckBoxActionPerformed
+        boolean isSelected = paintCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecPintura(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("pintado"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_paintCheckBoxActionPerformed
+
+    private void cam360CheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cam360CheckBoxActionPerformed
+        boolean isSelected = cam360CheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecCamara360(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("camara360"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_cam360CheckBoxActionPerformed
+
+    private void frontAssistCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontAssistCheckBoxActionPerformed
+        boolean isSelected = frontAssistCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecFrontAssist(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("asistente-frontal"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_frontAssistCheckBoxActionPerformed
+
+    private void cleanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanBtnActionPerformed
+        vehicleBox.setSelectedIndex(0);
+        decorators.clear();
+        selectedVehicle = null;
+        navigatorCheckBox.setSelected(false);
+        frontAssistCheckBox.setSelected(false);
+        cam360CheckBox.setSelected(false);
+        parkAssistantCheckBox.setSelected(false);
+        paintCheckBox.setSelected(false);
+        hubCapCheckBox.setSelected(false);
+        insuranceCheckBox.setSelected(false);
+        updateDecoratorsTable();
+        getBillTable();
+    }//GEN-LAST:event_cleanBtnActionPerformed
+
+    private void initAutomovileBox() {
+        Automovil noCar = new Automovil("0","Seleccione un vehiculo");
+        automoviles.add(0, new AutomovilSedan(noCar));
+        vehicleBox.setModel(new DefaultComboBoxModel<>(automoviles.toArray()));
+    }
+    
+    private void updateDecoratorsTable() {
+        Object[][] data = new Object[decorators.size()][];
+        float totalDecoradores = 0.0f;
+        for (int i = 0; i < decorators.size() ; i++) {
+            DecoradorEquipamiento dec = decorators.get(i);
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb, Locale.US.US);
+            float precioDecorador = (float)dec.getPrecioEquipamiento();
+            totalDecoradores += precioDecorador;
+            formatter.format("$ %(,.2f", precioDecorador);
+            data[i] = new Object[]{
+                dec.getNombreEquipamiento(),
+                dec.getDescripcionEquipamiento(),
+                sb
+            };
+        }
+        aditionalCostTable.setModel(new javax.swing.table.DefaultTableModel(
+            data,
+            new String [] {
+                "Concepto", "Costo", "Costo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        if (decorators.size()>0) {
+            totalAdicionesLbl.setVisible(true);
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", totalDecoradores);
+            totalAdicionesLbl.setText("Total Adiciones: "+sb);
+        } else {
+            totalAdicionesLbl.setVisible(false);
+        }
+    }
+    
+    private void getBillTable() {
+        Object[][] data = new Object[decorators.size()+1][];
+        StringBuilder sb;
+        Formatter formatter ;
+        if (selectedVehicle!=null) {
+            sb = new StringBuilder();
+            formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", selectedVehicle.getPrecioBase());
+            data[0] = new Object[]{
+                "Vehículo",
+                selectedVehicle.toString(),
+                sb
+            };
+        }
+        for (int i = 0; i < decorators.size() ; i++) {
+            DecoradorEquipamiento dec = decorators.get(i);
+            switch (dec.getNombreEquipamiento().toLowerCase()) {
+                case "camara360": {
+                    selectedVehicle = new DecCamara360(selectedVehicle);
+                    break;
+                }
+                case "asistente-frontal": {
+                    selectedVehicle = new DecFrontAssist(selectedVehicle);
+                    break;
+                }
+                case "navegador": {
+                    selectedVehicle = new DecNavegador(selectedVehicle);
+                    break;
+                }
+                case "park-assist": {
+                    selectedVehicle = new DecParkAssist(selectedVehicle);
+                    break;
+                }
+                case "pintado": {
+                    selectedVehicle = new DecPintura(selectedVehicle);
+                    break;
+                }
+                case "rines": {
+                    selectedVehicle = new DecRines(selectedVehicle);
+                    break;
+                }
+                case "seguro": {
+                    selectedVehicle = new DecSeguro(selectedVehicle);
+                    break;
+                }
+                default : {
+                    selectedVehicle = null;
+                    System.out.println("Error");
+                    throw new IllegalArgumentException("Size must be non-negative ");
+                }
+            }
+            sb = new StringBuilder();
+            formatter = new Formatter(sb, Locale.US.US);
+            float precioDecorador = (float)dec.getPrecioEquipamiento();
+            formatter.format("$ %(,.2f", precioDecorador);
+            data[i+1] = new Object[]{
+                dec.getNombreEquipamiento(),
+                dec.getDescripcionEquipamiento(),
+                sb
+            };
+        }
+        billTable.setModel(new javax.swing.table.DefaultTableModel(
+            data,
+            new String [] {
+                "Concepto", "Costo", "Costo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        if (decorators.size()>0 || selectedVehicle!=null) {
+            totalBillLbl.setVisible(true);
+            sb = new StringBuilder();
+            formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", selectedVehicle.cost());
+            totalBillLbl.setText("Costo total: "+sb);
+        } else {
+            totalBillLbl.setVisible(false);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -77,7 +622,41 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    // variables
+    private final ArrayList<IAutomovil> automoviles;
+    private IAutomovil selectedVehicle;
+    private ArrayList<DecoradorEquipamiento> decorators;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable aditionalCostTable;
+    private javax.swing.JLabel baseCostLbl;
+    private javax.swing.JLabel billLbl;
+    private javax.swing.JTable billTable;
+    private javax.swing.JButton buyBtn;
+    private javax.swing.JCheckBox cam360CheckBox;
+    private javax.swing.JLabel chooseVehicleLbl;
+    private javax.swing.JButton cleanBtn;
+    private javax.swing.JCheckBox frontAssistCheckBox;
+    private javax.swing.JCheckBox hubCapCheckBox;
+    private javax.swing.JCheckBox insuranceCheckBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JCheckBox navigatorCheckBox;
+    private javax.swing.JCheckBox paintCheckBox;
+    private javax.swing.JCheckBox parkAssistantCheckBox;
+    private javax.swing.JLabel thanksImg;
+    private javax.swing.JLabel totalAdicionesLbl;
+    private javax.swing.JLabel totalBillLbl;
+    private javax.swing.JComboBox<Object> vehicleBox;
+    private javax.swing.JTabbedPane vehicleTab;
     // End of variables declaration//GEN-END:variables
+
+
 }
