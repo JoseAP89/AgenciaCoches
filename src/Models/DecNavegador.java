@@ -17,7 +17,6 @@ public class DecNavegador extends DecoradorEquipamiento{
 
     @Override
     public String ordenarAuto() {
-        descripcionNavegador();
         return AutoDecorado.ordenarAuto() + ", equipamiento de Navegador";
     }    
     
@@ -26,8 +25,8 @@ public class DecNavegador extends DecoradorEquipamiento{
         return this.getPrecioEquipamiento() + AutoDecorado.cost();
     }
 
-    public void descripcionNavegador() {
-        System.out.println("Navegador integrado en la consola central.");
+    public String getDescripcionEquipamiento() {
+        return "Navegador integrado en la consola central.";
     }
 
     @Override

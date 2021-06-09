@@ -17,17 +17,12 @@ public class DecRines extends DecoradorEquipamiento{
 
     @Override
     public String ordenarAuto() {
-        agregarRines();
         return AutoDecorado.ordenarAuto()+", se agregan rines";
     }
     
     @Override
     public double cost() {
         return this.getPrecioEquipamiento() + AutoDecorado.cost();
-    }
-
-    public void agregarRines() {
-        System.out.println("Se agregaron rines");
     }
 
     @Override
@@ -39,5 +34,10 @@ public class DecRines extends DecoradorEquipamiento{
     public double getPrecioEquipamiento() {
         return 7370.00;
     }
+    
+    public String getDescripcionEquipamiento() {
+        return "Rines deportivos de ultima generación.";
+    }
+
     
 }

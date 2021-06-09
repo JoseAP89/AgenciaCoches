@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import java.util.Formatter;
 import java.util.Locale;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author joseap
@@ -21,15 +23,14 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         automoviles = DBReader.getVehicles();
-        for (IAutomovil automovile : automoviles) {
-            System.out.println(automovile);
-        }
+        decorators = new ArrayList<>();
         initAutomovileBox();
         baseCostLbl.setVisible(false);
         thanksImg.setVisible(false);
         billLbl.setVisible(false);
         billTable.setVisible(false);
         totalBillLbl.setVisible(false);
+        totalAdicionesLbl.setVisible(false);
 
     }
 
@@ -60,6 +61,7 @@ public class Main extends javax.swing.JFrame {
         frontAssistCheckBox = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         aditionalCostTable = new javax.swing.JTable();
+        totalAdicionesLbl = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         buyBtn = new javax.swing.JButton();
@@ -107,7 +109,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,32 +132,64 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setText("Elija los componentes adicionales de su vehículo");
 
         insuranceCheckBox.setText("Seguro");
+        insuranceCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insuranceCheckBoxActionPerformed(evt);
+            }
+        });
 
         parkAssistantCheckBox.setText("Asistente digital de estacionado");
+        parkAssistantCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parkAssistantCheckBoxActionPerformed(evt);
+            }
+        });
 
         hubCapCheckBox.setText("Rines personalizados");
+        hubCapCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hubCapCheckBoxActionPerformed(evt);
+            }
+        });
 
         paintCheckBox.setText("Pintado personalizado");
+        paintCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paintCheckBoxActionPerformed(evt);
+            }
+        });
 
         navigatorCheckBox.setText("Navegador");
+        navigatorCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navigatorCheckBoxActionPerformed(evt);
+            }
+        });
 
         cam360CheckBox.setText("Cámara 360°");
+        cam360CheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cam360CheckBoxActionPerformed(evt);
+            }
+        });
 
         frontAssistCheckBox.setText("Asistente Frontal");
+        frontAssistCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontAssistCheckBoxActionPerformed(evt);
+            }
+        });
 
         aditionalCostTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Concepto", "Costo"
+                "Concepto", "Descripción", "Costo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -164,14 +198,17 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(aditionalCostTable);
 
+        totalAdicionesLbl.setText("Total de adiciones: 0.00");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -186,11 +223,10 @@ public class Main extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(navigatorCheckBox)
                                     .addComponent(cam360CheckBox)))
-                            .addComponent(frontAssistCheckBox)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(frontAssistCheckBox)
+                            .addComponent(totalAdicionesLbl))
+                        .addGap(0, 153, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,8 +246,10 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(frontAssistCheckBox)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(totalAdicionesLbl)
+                .addGap(20, 20, 20))
         );
 
         vehicleTab.addTab("Adiciones", jPanel1);
@@ -259,7 +297,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(thanksImg))
                     .addComponent(billLbl)
                     .addComponent(buyBtn))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(313, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,10 +367,121 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buyBtnActionPerformed
 
+    private void insuranceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insuranceCheckBoxActionPerformed
+        boolean isSelected = insuranceCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecSeguro(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("seguro"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_insuranceCheckBoxActionPerformed
+
+    private void parkAssistantCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkAssistantCheckBoxActionPerformed
+        boolean isSelected = parkAssistantCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecParkAssist(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("park-assist"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_parkAssistantCheckBoxActionPerformed
+
+    private void navigatorCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navigatorCheckBoxActionPerformed
+        boolean isSelected = navigatorCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecNavegador(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("navegador"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_navigatorCheckBoxActionPerformed
+
+    private void hubCapCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hubCapCheckBoxActionPerformed
+        boolean isSelected = hubCapCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecRines(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("rines"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_hubCapCheckBoxActionPerformed
+
+    private void paintCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paintCheckBoxActionPerformed
+        boolean isSelected = paintCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecPintura(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("pintado"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_paintCheckBoxActionPerformed
+
+    private void cam360CheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cam360CheckBoxActionPerformed
+        boolean isSelected = cam360CheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecCamara360(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("camara360"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_cam360CheckBoxActionPerformed
+
+    private void frontAssistCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontAssistCheckBoxActionPerformed
+        boolean isSelected = frontAssistCheckBox.getSelectedObjects()!=null ? true: false;
+        if (isSelected) {
+            decorators.add(new DecFrontAssist(selectedVehicle));
+        } else {
+            decorators.removeIf( dec -> dec.getNombreEquipamiento().toLowerCase().equals("asistente-frontal"));
+        }
+        updateDecoratorsTable();
+    }//GEN-LAST:event_frontAssistCheckBoxActionPerformed
+
     private void initAutomovileBox() {
         Automovil noCar = new Automovil("0","Seleccione un vehiculo");
         automoviles.add(0, new AutomovilSedan(noCar));
         vehicleBox.setModel(new DefaultComboBoxModel<>(automoviles.toArray()));
+    }
+    
+    private void updateDecoratorsTable() {
+        Object[][] data = new Object[decorators.size()][2];
+        float totalDecoradores = 0.0f;
+        for (int i = 0; i < decorators.size() ; i++) {
+            DecoradorEquipamiento dec = decorators.get(i);
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb, Locale.US.US);
+            float precioDecorador = (float)dec.getPrecioEquipamiento();
+            totalDecoradores += precioDecorador;
+            formatter.format("$ %(,.2f", precioDecorador);
+            data[i] = new Object[]{
+                dec.getNombreEquipamiento(),
+                dec.getDescripcionEquipamiento(),
+                sb
+            };
+        }
+        aditionalCostTable.setModel(new javax.swing.table.DefaultTableModel(
+            data,
+            new String [] {
+                "Concepto", "Costo", "Costo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        if (decorators.size()>0) {
+            totalAdicionesLbl.setVisible(true);
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", totalDecoradores);
+            totalAdicionesLbl.setText("Total Adiciones: "+sb);
+        } else {
+            totalAdicionesLbl.setVisible(false);
+        }
     }
     
     /**
@@ -371,8 +520,10 @@ public class Main extends javax.swing.JFrame {
     }
     
     // variables
-    private ArrayList<IAutomovil> automoviles;
-    IAutomovil selectedVehicle;
+    private final ArrayList<IAutomovil> automoviles;
+    private IAutomovil selectedVehicle;
+    private ArrayList<DecoradorEquipamiento> decorators;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable aditionalCostTable;
     private javax.swing.JLabel baseCostLbl;
@@ -397,6 +548,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JCheckBox paintCheckBox;
     private javax.swing.JCheckBox parkAssistantCheckBox;
     private javax.swing.JLabel thanksImg;
+    private javax.swing.JLabel totalAdicionesLbl;
     private javax.swing.JLabel totalBillLbl;
     private javax.swing.JComboBox<Object> vehicleBox;
     private javax.swing.JTabbedPane vehicleTab;

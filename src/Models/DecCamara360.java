@@ -33,12 +33,17 @@ public class DecCamara360 extends DecoradorEquipamiento{
     
     @Override
     public String getNombreEquipamiento() {
-        return "Camara 360°";
+        return "Camara360";
     }
     
     @Override
     public double getPrecioEquipamiento() {
         return 4057.00;
+    }
+
+    @Override
+    public String getDescripcionEquipamiento() {
+        return "Camara de 360° de movilidad para una mejor experiencia de manejo.";
     }
     
 }

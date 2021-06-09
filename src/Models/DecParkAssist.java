@@ -17,7 +17,6 @@ public class DecParkAssist extends DecoradorEquipamiento{
 
     @Override
     public String ordenarAuto() {
-        descripcionParkAssist();
         return AutoDecorado.ordenarAuto() + ", equipamiento ParkAssist";
     }
 
@@ -27,18 +26,19 @@ public class DecParkAssist extends DecoradorEquipamiento{
         return this.getPrecioEquipamiento() + AutoDecorado.cost();
     }
 
-    private void descripcionParkAssist() {
-        System.out.println("ParkAssist, con ayuda de sensores de aproximación, el coche se encarga por si mismo de girar el volante y meter el coche en la plaza libre");
-    }
-
     @Override
     public String getNombreEquipamiento() {
-        return "Park Assist";
+        return "Park-Assist";
     }
 
     @Override
     public double getPrecioEquipamiento() {
         return 13785.00;
+    }
+
+    @Override
+    public String getDescripcionEquipamiento() {
+        return "Asistente para facilitar el estacionado de su vehículo.";
     }
     
 }

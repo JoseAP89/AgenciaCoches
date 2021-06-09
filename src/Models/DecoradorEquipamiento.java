@@ -20,7 +20,7 @@ public abstract class DecoradorEquipamiento implements IAutomovil {
     public abstract String ordenarAuto();
     
     public abstract String getNombreEquipamiento();
-    
+    public abstract String getDescripcionEquipamiento();
     public abstract double getPrecioEquipamiento();
     
     public String getMarca(){
