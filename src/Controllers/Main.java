@@ -26,6 +26,11 @@ public class Main extends javax.swing.JFrame {
         }
         initAutomovileBox();
         baseCostLbl.setVisible(false);
+        thanksImg.setVisible(false);
+        billLbl.setVisible(false);
+        billTable.setVisible(false);
+        totalBillLbl.setVisible(false);
+
     }
 
     /**
@@ -43,7 +48,26 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         vehicleBox = new javax.swing.JComboBox<>();
         baseCostLbl = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        insuranceCheckBox = new javax.swing.JCheckBox();
+        parkAssistantCheckBox = new javax.swing.JCheckBox();
+        hubCapCheckBox = new javax.swing.JCheckBox();
+        paintCheckBox = new javax.swing.JCheckBox();
+        navigatorCheckBox = new javax.swing.JCheckBox();
+        cam360CheckBox = new javax.swing.JCheckBox();
+        frontAssistCheckBox = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        aditionalCostTable = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        buyBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        billTable = new javax.swing.JTable();
+        billLbl = new javax.swing.JLabel();
+        totalBillLbl = new javax.swing.JLabel();
+        thanksImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,18 +89,25 @@ public class Main extends javax.swing.JFrame {
 
         baseCostLbl.setText("Costo base: $ 0.00");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(chooseVehicleLbl)
-                    .addComponent(jButton1)
-                    .addComponent(vehicleBox, 0, 233, Short.MAX_VALUE)
-                    .addComponent(baseCostLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(chooseVehicleLbl)
+                            .addComponent(jButton1)
+                            .addComponent(vehicleBox, 0, 233, Short.MAX_VALUE)
+                            .addComponent(baseCostLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,53 +120,189 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(31, 31, 31)
                 .addComponent(baseCostLbl)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addGap(34, 34, 34))
         );
 
         vehicleTab.addTab("Elejir", jPanel2);
+
+        jLabel1.setText("Elija los componentes adicionales de su vehículo");
+
+        insuranceCheckBox.setText("Seguro");
+
+        parkAssistantCheckBox.setText("Asistente digital de estacionado");
+
+        hubCapCheckBox.setText("Rines personalizados");
+
+        paintCheckBox.setText("Pintado personalizado");
+
+        navigatorCheckBox.setText("Navegador");
+
+        cam360CheckBox.setText("Cámara 360°");
+
+        frontAssistCheckBox.setText("Asistente Frontal");
+
+        aditionalCostTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Concepto", "Costo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(aditionalCostTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 688, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(insuranceCheckBox)
+                                    .addComponent(hubCapCheckBox))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(parkAssistantCheckBox)
+                                    .addComponent(paintCheckBox))
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(navigatorCheckBox)
+                                    .addComponent(cam360CheckBox)))
+                            .addComponent(frontAssistCheckBox)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insuranceCheckBox)
+                    .addComponent(parkAssistantCheckBox)
+                    .addComponent(navigatorCheckBox))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cam360CheckBox)
+                    .addComponent(paintCheckBox)
+                    .addComponent(hubCapCheckBox))
+                .addGap(18, 18, 18)
+                .addComponent(frontAssistCheckBox)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        vehicleTab.addTab("Modificar", jPanel1);
+        vehicleTab.addTab("Adiciones", jPanel1);
+
+        jLabel2.setText("Realizar compra");
+
+        buyBtn.setText("Comprar");
+        buyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyBtnActionPerformed(evt);
+            }
+        });
+
+        billTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(billTable);
+
+        billLbl.setText("Factura de compra");
+
+        totalBillLbl.setText("Total: $ 0.00");
+
+        thanksImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/thanks.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalBillLbl)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(thanksImg))
+                    .addComponent(billLbl)
+                    .addComponent(buyBtn))
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(28, 28, 28)
+                        .addComponent(buyBtn))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(thanksImg, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
+                .addComponent(billLbl)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(totalBillLbl)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        vehicleTab.addTab("Comprar", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(vehicleTab)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addComponent(vehicleTab)
-                .addContainerGap())
+                .addGap(11, 11, 11))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void initAutomovileBox() {
-        Automovil noCar = new Automovil("0","Seleccione un vehiculo");
-        automoviles.add(0, noCar);
-        vehicleBox.setModel(new DefaultComboBoxModel<>(automoviles.toArray()));
-    }
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void vehicleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleBoxActionPerformed
         selectedVehicle = (Automovil)vehicleBox.getSelectedItem();
@@ -150,6 +317,24 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_vehicleBoxActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
+        thanksImg.setVisible(true);
+        billLbl.setVisible(true);
+        billTable.setVisible(true);
+        totalBillLbl.setVisible(true);
+
+    }//GEN-LAST:event_buyBtnActionPerformed
+
+    private void initAutomovileBox() {
+        Automovil noCar = new Automovil("0","Seleccione un vehiculo");
+        automoviles.add(0, noCar);
+        vehicleBox.setModel(new DefaultComboBoxModel<>(automoviles.toArray()));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -189,11 +374,30 @@ public class Main extends javax.swing.JFrame {
     private ArrayList<Automovil> automoviles;
     Automovil selectedVehicle;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable aditionalCostTable;
     private javax.swing.JLabel baseCostLbl;
+    private javax.swing.JLabel billLbl;
+    private javax.swing.JTable billTable;
+    private javax.swing.JButton buyBtn;
+    private javax.swing.JCheckBox cam360CheckBox;
     private javax.swing.JLabel chooseVehicleLbl;
+    private javax.swing.JCheckBox frontAssistCheckBox;
+    private javax.swing.JCheckBox hubCapCheckBox;
+    private javax.swing.JCheckBox insuranceCheckBox;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JCheckBox navigatorCheckBox;
+    private javax.swing.JCheckBox paintCheckBox;
+    private javax.swing.JCheckBox parkAssistantCheckBox;
+    private javax.swing.JLabel thanksImg;
+    private javax.swing.JLabel totalBillLbl;
     private javax.swing.JComboBox<Object> vehicleBox;
     private javax.swing.JTabbedPane vehicleTab;
     // End of variables declaration//GEN-END:variables
