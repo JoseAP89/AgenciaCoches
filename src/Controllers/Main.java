@@ -31,7 +31,7 @@ public class Main extends javax.swing.JFrame {
         billTable.setVisible(false);
         totalBillLbl.setVisible(false);
         totalAdicionesLbl.setVisible(false);
-
+        buyBtn.setEnabled(false);
     }
 
     /**
@@ -46,7 +46,6 @@ public class Main extends javax.swing.JFrame {
         vehicleTab = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         chooseVehicleLbl = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         vehicleBox = new javax.swing.JComboBox<>();
         baseCostLbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -70,17 +69,11 @@ public class Main extends javax.swing.JFrame {
         billLbl = new javax.swing.JLabel();
         totalBillLbl = new javax.swing.JLabel();
         thanksImg = new javax.swing.JLabel();
+        cleanBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         chooseVehicleLbl.setText("Elije el vehiculo que deseas");
-
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         vehicleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         vehicleBox.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +96,6 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(chooseVehicleLbl)
-                            .addComponent(jButton1)
                             .addComponent(vehicleBox, 0, 233, Short.MAX_VALUE)
                             .addComponent(baseCostLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -118,9 +110,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(chooseVehicleLbl)
                 .addGap(27, 27, 27)
                 .addComponent(vehicleBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jButton1)
-                .addGap(31, 31, 31)
+                .addGap(95, 95, 95)
                 .addComponent(baseCostLbl)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
@@ -282,6 +272,13 @@ public class Main extends javax.swing.JFrame {
 
         thanksImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/thanks.png"))); // NOI18N
 
+        cleanBtn.setText("Limpiar");
+        cleanBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -292,11 +289,15 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(totalBillLbl)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(buyBtn)
+                                .addGap(17, 17, 17)
+                                .addComponent(cleanBtn)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(thanksImg))
-                    .addComponent(billLbl)
-                    .addComponent(buyBtn))
+                    .addComponent(billLbl))
                 .addContainerGap(313, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -306,8 +307,10 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(buyBtn))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buyBtn)
+                            .addComponent(cleanBtn)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(thanksImg, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -350,21 +353,21 @@ public class Main extends javax.swing.JFrame {
             Formatter formatter = new Formatter(sb, Locale.US.US);
             formatter.format("$ %(,.2f", selectedVehicle.getPrecioBase());
             baseCostLbl.setText("Costo base: " + sb);
+            buyBtn.setEnabled(true);
         } else {
             baseCostLbl.setVisible(false);
+            buyBtn.setEnabled(false);
+            thanksImg.setVisible(false);
         }
     }//GEN-LAST:event_vehicleBoxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
+        selectedVehicle = (IAutomovil)vehicleBox.getSelectedItem();
         thanksImg.setVisible(true);
         billLbl.setVisible(true);
         billTable.setVisible(true);
         totalBillLbl.setVisible(true);
-
+        getBillTable();
     }//GEN-LAST:event_buyBtnActionPerformed
 
     private void insuranceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insuranceCheckBoxActionPerformed
@@ -437,6 +440,21 @@ public class Main extends javax.swing.JFrame {
         updateDecoratorsTable();
     }//GEN-LAST:event_frontAssistCheckBoxActionPerformed
 
+    private void cleanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanBtnActionPerformed
+        vehicleBox.setSelectedIndex(0);
+        decorators.clear();
+        selectedVehicle = null;
+        navigatorCheckBox.setSelected(false);
+        frontAssistCheckBox.setSelected(false);
+        cam360CheckBox.setSelected(false);
+        parkAssistantCheckBox.setSelected(false);
+        paintCheckBox.setSelected(false);
+        hubCapCheckBox.setSelected(false);
+        insuranceCheckBox.setSelected(false);
+        updateDecoratorsTable();
+        getBillTable();
+    }//GEN-LAST:event_cleanBtnActionPerformed
+
     private void initAutomovileBox() {
         Automovil noCar = new Automovil("0","Seleccione un vehiculo");
         automoviles.add(0, new AutomovilSedan(noCar));
@@ -444,7 +462,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     private void updateDecoratorsTable() {
-        Object[][] data = new Object[decorators.size()][2];
+        Object[][] data = new Object[decorators.size()][];
         float totalDecoradores = 0.0f;
         for (int i = 0; i < decorators.size() ; i++) {
             DecoradorEquipamiento dec = decorators.get(i);
@@ -481,6 +499,92 @@ public class Main extends javax.swing.JFrame {
             totalAdicionesLbl.setText("Total Adiciones: "+sb);
         } else {
             totalAdicionesLbl.setVisible(false);
+        }
+    }
+    
+    private void getBillTable() {
+        Object[][] data = new Object[decorators.size()+1][];
+        StringBuilder sb;
+        Formatter formatter ;
+        if (selectedVehicle!=null) {
+            sb = new StringBuilder();
+            formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", selectedVehicle.getPrecioBase());
+            data[0] = new Object[]{
+                "Vehículo",
+                selectedVehicle.toString(),
+                sb
+            };
+        }
+        for (int i = 0; i < decorators.size() ; i++) {
+            DecoradorEquipamiento dec = decorators.get(i);
+            switch (dec.getNombreEquipamiento().toLowerCase()) {
+                case "camara360": {
+                    selectedVehicle = new DecCamara360(selectedVehicle);
+                    break;
+                }
+                case "asistente-frontal": {
+                    selectedVehicle = new DecFrontAssist(selectedVehicle);
+                    break;
+                }
+                case "navegador": {
+                    selectedVehicle = new DecNavegador(selectedVehicle);
+                    break;
+                }
+                case "park-assist": {
+                    selectedVehicle = new DecParkAssist(selectedVehicle);
+                    break;
+                }
+                case "pintado": {
+                    selectedVehicle = new DecPintura(selectedVehicle);
+                    break;
+                }
+                case "rines": {
+                    selectedVehicle = new DecRines(selectedVehicle);
+                    break;
+                }
+                case "seguro": {
+                    selectedVehicle = new DecSeguro(selectedVehicle);
+                    break;
+                }
+                default : {
+                    selectedVehicle = null;
+                    System.out.println("Error");
+                    throw new IllegalArgumentException("Size must be non-negative ");
+                }
+            }
+            sb = new StringBuilder();
+            formatter = new Formatter(sb, Locale.US.US);
+            float precioDecorador = (float)dec.getPrecioEquipamiento();
+            formatter.format("$ %(,.2f", precioDecorador);
+            data[i+1] = new Object[]{
+                dec.getNombreEquipamiento(),
+                dec.getDescripcionEquipamiento(),
+                sb
+            };
+        }
+        billTable.setModel(new javax.swing.table.DefaultTableModel(
+            data,
+            new String [] {
+                "Concepto", "Costo", "Costo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        if (decorators.size()>0 || selectedVehicle!=null) {
+            totalBillLbl.setVisible(true);
+            sb = new StringBuilder();
+            formatter = new Formatter(sb, Locale.US.US);
+            formatter.format("$ %(,.2f", selectedVehicle.cost());
+            totalBillLbl.setText("Costo total: "+sb);
+        } else {
+            totalBillLbl.setVisible(false);
         }
     }
     
@@ -532,10 +636,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton buyBtn;
     private javax.swing.JCheckBox cam360CheckBox;
     private javax.swing.JLabel chooseVehicleLbl;
+    private javax.swing.JButton cleanBtn;
     private javax.swing.JCheckBox frontAssistCheckBox;
     private javax.swing.JCheckBox hubCapCheckBox;
     private javax.swing.JCheckBox insuranceCheckBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -553,4 +657,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<Object> vehicleBox;
     private javax.swing.JTabbedPane vehicleTab;
     // End of variables declaration//GEN-END:variables
+
+
 }

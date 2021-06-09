@@ -32,7 +32,7 @@ public class DecSeguro extends DecoradorEquipamiento{
 
     @Override
     public double getPrecioEquipamiento() {
-        return 13303.00;
+        return  13303.00;
     }
     
     public String getDescripcionEquipamiento() {
