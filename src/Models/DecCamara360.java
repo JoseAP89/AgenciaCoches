@@ -20,15 +20,25 @@ public class DecCamara360 extends DecoradorEquipamiento{
         descripcionCamara360();
         return AutoDecorado.ordenarAuto() + ", equipamiento de Camaras 360° ";
     }
-    
+
 
     @Override
     public double cost() {
-        return 4057.00 + AutoDecorado.cost();
+        return this.getPrecioEquipamiento() + AutoDecorado.cost();
     }
 
     private void descripcionCamara360() {
         System.out.println("Como opcion para facilitar el aparcamiento, la camara de visión trasera permite una mejor percepción periferica de todo lo que rodea al auto ");
+    }
+    
+    @Override
+    public String getNombreEquipamiento() {
+        return "Camara 360°";
+    }
+    
+    @Override
+    public double getPrecioEquipamiento() {
+        return 4057.00;
     }
     
 }

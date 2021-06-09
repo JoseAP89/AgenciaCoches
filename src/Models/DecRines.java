@@ -23,11 +23,21 @@ public class DecRines extends DecoradorEquipamiento{
     
     @Override
     public double cost() {
-        return 7370.00 + AutoDecorado.cost();
+        return this.getPrecioEquipamiento() + AutoDecorado.cost();
     }
 
-    private void agregarRines() {
+    public void agregarRines() {
         System.out.println("Se agregaron rines");
+    }
+
+    @Override
+    public String getNombreEquipamiento() {
+        return "Rines";
+    }
+
+    @Override
+    public double getPrecioEquipamiento() {
+        return 7370.00;
     }
     
 }

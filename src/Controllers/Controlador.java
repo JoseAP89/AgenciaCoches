@@ -23,7 +23,15 @@ import Models.IAutomovil;
  */
 public class Controlador {
     Automovil auto;
-    IAutomovil autoTune;
+    public IAutomovil autoTune;
+    public DecCamara360 eqCamaras;
+    public DecFrontAssist eqFrontAssist ;
+    public DecNavegador eqNavegador;
+    public DecParkAssist  eqParkAssist;
+    public DecPintura eqPintura;
+    public DecRines eqRines;
+    public DecSeguro eqSeguro;
+            
 
     public Controlador() {
         this.auto = new Automovil();
@@ -58,30 +66,37 @@ public class Controlador {
     }
     
     public void addCamara360(){
+        eqCamaras = new DecCamara360(autoTune);
         autoTune = new DecCamara360(autoTune);
     }
     
     public void addFrontAssist(){
+        eqFrontAssist = new DecFrontAssist(autoTune);
         autoTune = new DecFrontAssist(autoTune);
     }
 
     public void addNavegador(){
+        eqNavegador = new DecNavegador(autoTune);
         autoTune = new DecNavegador(autoTune);
     }
 
     public void addParkAssist(){
+        eqParkAssist = new DecParkAssist(autoTune);
         autoTune = new DecParkAssist(autoTune);
     }
     
     public void addPintura(){
+        eqPintura = new DecPintura(autoTune);
         autoTune = new DecPintura(autoTune);
     }
 
     public void addRines() {
+        eqRines = new DecRines(autoTune);
         autoTune = new DecRines(autoTune);
     }
     
     public void addSeguro() {
+        eqSeguro = new DecSeguro(autoTune);
         autoTune = new DecSeguro(autoTune);
     }    
     

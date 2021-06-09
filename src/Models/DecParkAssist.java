@@ -10,25 +10,35 @@ package Models;
  * @author Salvador Solis Atenco
  */
 public class DecParkAssist extends DecoradorEquipamiento{
-
+    
     public DecParkAssist(IAutomovil AutoDecorado) {
         super(AutoDecorado);
     }
-    
+
     @Override
     public String ordenarAuto() {
         descripcionParkAssist();
         return AutoDecorado.ordenarAuto() + ", equipamiento ParkAssist";
     }
 
-
+    
     @Override
     public double cost() {
-        return 13785.00 + AutoDecorado.cost();
+        return this.getPrecioEquipamiento() + AutoDecorado.cost();
     }
 
     private void descripcionParkAssist() {
         System.out.println("ParkAssist, con ayuda de sensores de aproximación, el coche se encarga por si mismo de girar el volante y meter el coche en la plaza libre");
+    }
+
+    @Override
+    public String getNombreEquipamiento() {
+        return "Park Assist";
+    }
+
+    @Override
+    public double getPrecioEquipamiento() {
+        return 13785.00;
     }
     
 }

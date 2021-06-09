@@ -19,4 +19,8 @@ public abstract class DecoradorEquipamiento implements IAutomovil {
     @Override
     public abstract String ordenarAuto();
     
+    public abstract String getNombreEquipamiento();
+    
+    public abstract double getPrecioEquipamiento();
+    
 }

@@ -4,6 +4,7 @@ import Models.Automovil;
 import Models.AutomovilSedan;
 import Models.DecFrontAssist;
 import Models.DecParkAssist;
+import Models.DecSeguro;
 import Models.IAutomovil;
 import java.text.DecimalFormat;
 
@@ -30,8 +31,9 @@ public class pruebas {
 //        auto2 = new DecParkAssist(auto2);//agrega decoradores
 //        auto2 = new DecFrontAssist(auto2);
 //        
-//        System.out.println("Descripcion: "+auto2.ordenarAuto());    
+//        System.out.println("Descripcion: "+auto2.ordenarAuto());
 //        System.out.println("$" + auto2.cost());
+        
         
         DecimalFormat formato = new DecimalFormat("$#,###.00");
 
@@ -40,6 +42,8 @@ public class pruebas {
         System.out.println("Descripcion: "+control.getDescripcion());
         System.out.println("Costo total $"+control.getTotal());
         control.addParkAssist();
+        System.out.println(control.eqParkAssist.getNombreEquipamiento());
+        System.out.println(control.eqParkAssist.getPrecioEquipamiento());
         System.out.println("Descripcion: "+control.getDescripcion());
         System.out.println("Costo total "+formato.format(control.getTotal()));
     }
