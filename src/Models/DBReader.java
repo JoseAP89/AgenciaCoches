@@ -49,17 +49,25 @@ public class DBReader {
        return data;
    }
     
-    public static ArrayList<Automovil> getVehicles() {
+    public static ArrayList<IAutomovil> getVehicles() {
         ArrayList<ArrayList<String>> data = getValues("vehiclesDB.dat");
-        ArrayList<Automovil> automoviles = new ArrayList<>();
-        // id,brand,model,year,price
+        ArrayList<IAutomovil> automoviles = new ArrayList<>();
+        // serie,marca,modelo,año,price,typo
         for (ArrayList<String> r : data) {
             float price = Float.parseFloat( r.get(4).substring(1));
-            automoviles.add(new Automovil(r.get(0), r.get(1), r.get(2), r.get(3), price));
+            String type = r.get(5);
+            Automovil auto = new Automovil(r.get(0), r.get(1), r.get(2), r.get(3), price);
+            IAutomovil iauto = null;
+            if (type.equals("sedan")) {
+                iauto = new AutomovilSedan(auto);
+            } else {
+                iauto = new AutomovilPickUp(auto);
+            }
+            automoviles.add(iauto);
         }
-        Collections.sort(automoviles, new Comparator<Automovil>() {
+        Collections.sort(automoviles, new Comparator<IAutomovil>() {
             @Override 
-            public int compare(Automovil x, Automovil y) {
+            public int compare(IAutomovil x, IAutomovil y) {
                 return x.getMarca().compareTo(y.getMarca());
             }
         });

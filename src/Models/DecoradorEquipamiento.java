@@ -23,4 +23,16 @@ public abstract class DecoradorEquipamiento implements IAutomovil {
     
     public abstract double getPrecioEquipamiento();
     
+    public String getMarca(){
+        return AutoDecorado.getMarca();
+    }
+    
+    public float getPrecioBase(){
+        return AutoDecorado.getPrecioBase();
+    }
+    
+    public String getSerie() {
+        return AutoDecorado.getSerie();
+    }
+    
 }

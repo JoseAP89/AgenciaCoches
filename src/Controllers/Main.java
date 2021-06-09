@@ -21,7 +21,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         automoviles = DBReader.getVehicles();
-        for (Automovil automovile : automoviles) {
+        for (IAutomovil automovile : automoviles) {
             System.out.println(automovile);
         }
         initAutomovileBox();
@@ -305,12 +305,12 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void vehicleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleBoxActionPerformed
-        selectedVehicle = (Automovil)vehicleBox.getSelectedItem();
-        if (selectedVehicle!=null && !selectedVehicle.getNum_serie().equals("0")) {
+        selectedVehicle = (IAutomovil)vehicleBox.getSelectedItem();
+        if (selectedVehicle!=null && !selectedVehicle.getSerie().equals("0")) {
             baseCostLbl.setVisible(true);
             StringBuilder sb = new StringBuilder();
             Formatter formatter = new Formatter(sb, Locale.US.US);
-            formatter.format("$ %(,.2f", selectedVehicle.getPrice());
+            formatter.format("$ %(,.2f", selectedVehicle.getPrecioBase());
             baseCostLbl.setText("Costo base: " + sb);
         } else {
             baseCostLbl.setVisible(false);
@@ -331,7 +331,7 @@ public class Main extends javax.swing.JFrame {
 
     private void initAutomovileBox() {
         Automovil noCar = new Automovil("0","Seleccione un vehiculo");
-        automoviles.add(0, noCar);
+        automoviles.add(0, new AutomovilSedan(noCar));
         vehicleBox.setModel(new DefaultComboBoxModel<>(automoviles.toArray()));
     }
     
@@ -371,8 +371,8 @@ public class Main extends javax.swing.JFrame {
     }
     
     // variables
-    private ArrayList<Automovil> automoviles;
-    Automovil selectedVehicle;
+    private ArrayList<IAutomovil> automoviles;
+    IAutomovil selectedVehicle;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable aditionalCostTable;
     private javax.swing.JLabel baseCostLbl;
