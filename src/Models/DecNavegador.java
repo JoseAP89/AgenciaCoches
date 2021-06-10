@@ -25,10 +25,6 @@ public class DecNavegador extends DecoradorEquipamiento{
         return this.getPrecioEquipamiento() + AutoDecorado.cost();
     }
 
-    public String getDescripcionEquipamiento() {
-        return "Navegador integrado en la consola central.";
-    }
-
     @Override
     public String getNombreEquipamiento() {
         return "Navegador";
@@ -37,6 +33,11 @@ public class DecNavegador extends DecoradorEquipamiento{
     @Override
     public double getPrecioEquipamiento() {
         return 3836.00;
+    }
+
+    @Override
+    public String getDescipcionEquipamiento() {
+        return "Navegador integrado en la consola central.";
     }
     
 }
