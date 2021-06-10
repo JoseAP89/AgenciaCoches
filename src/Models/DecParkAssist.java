@@ -28,7 +28,7 @@ public class DecParkAssist extends DecoradorEquipamiento{
 
     @Override
     public String getNombreEquipamiento() {
-        return "Park-Assist";
+        return "Park Assist";
     }
 
     @Override
@@ -37,8 +37,8 @@ public class DecParkAssist extends DecoradorEquipamiento{
     }
 
     @Override
-    public String getDescripcionEquipamiento() {
-        return "Asistente para facilitar el estacionado de su vehículo.";
+    public String getDescipcionEquipamiento() {
+        return "ParkAssist, con ayuda de sensores de aproximación, el coche se encarga por si mismo de girar el volante y meter el coche en la plaza libre";
     }
     
 }
