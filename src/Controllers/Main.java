@@ -255,13 +255,13 @@ public class Main extends javax.swing.JFrame {
 
         billTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Concepto", "Descripción", "Costo"
             }
         ));
         jScrollPane2.setViewportView(billTable);
@@ -286,19 +286,22 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalBillLbl)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totalBillLbl)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(buyBtn)
-                                .addGap(17, 17, 17)
-                                .addComponent(cleanBtn)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(thanksImg))
-                    .addComponent(billLbl))
-                .addContainerGap(313, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(buyBtn)
+                                        .addGap(17, 17, 17)
+                                        .addComponent(cleanBtn)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(thanksImg))
+                            .addComponent(billLbl))
+                        .addGap(0, 431, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +483,7 @@ public class Main extends javax.swing.JFrame {
         aditionalCostTable.setModel(new javax.swing.table.DefaultTableModel(
             data,
             new String [] {
-                "Concepto", "Costo", "Costo"
+                "Concepto", "Descripción", "Costo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -566,7 +569,7 @@ public class Main extends javax.swing.JFrame {
         billTable.setModel(new javax.swing.table.DefaultTableModel(
             data,
             new String [] {
-                "Concepto", "Costo", "Costo"
+                "Concepto", "Descripción", "Costo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
