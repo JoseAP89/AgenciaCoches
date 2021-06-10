@@ -42,8 +42,8 @@ public class pruebas {
         System.out.println("Descripcion: "+control.getDescripcion());
         System.out.println("Costo total $"+control.getTotal());
         control.addParkAssist();
-        System.out.println(control.eqParkAssist.getNombreEquipamiento());
-        System.out.println(control.eqParkAssist.getPrecioEquipamiento());
+        System.out.println(control.equipamiento.getNombreEquipamiento());
+        System.out.println(control.equipamiento.getPrecioEquipamiento());
         System.out.println("Descripcion: "+control.getDescripcion());
         System.out.println("Costo total "+formato.format(control.getTotal()));
     }
