@@ -15,6 +15,7 @@ import Models.DecParkAssist;
 import Models.DecPintura;
 import Models.DecRines;
 import Models.DecSeguro;
+import Models.DecoradorEquipamiento;
 import Models.IAutomovil;
 
 /**
@@ -22,21 +23,16 @@ import Models.IAutomovil;
  * @author Salvador Solis Atenco
  */
 public class Controlador {
-    Automovil auto;
-    public IAutomovil autoTune;
-    public DecCamara360 eqCamaras;
-    public DecFrontAssist eqFrontAssist ;
-    public DecNavegador eqNavegador;
-    public DecParkAssist  eqParkAssist;
-    public DecPintura eqPintura;
-    public DecRines eqRines;
-    public DecSeguro eqSeguro;
-            
-
+    private Automovil auto;
+    private IAutomovil autoTune;
+    public DecoradorEquipamiento equipamiento;
+    
     public Controlador() {
         this.auto = new Automovil();
+        if(auto != null)
+            System.out.println("se crea automovil");
     }
-
+    
     public void setMarca(String marca) {
         auto.setMarca(marca);
     }
@@ -51,10 +47,21 @@ public class Controlador {
 
     public void crearSedean() {
         autoTune = new AutomovilSedan(auto);
+        if(autoTune != null){
+            System.out.println("Se crea un auto interfaz Sedan");
+        }else{
+            System.out.println("No se crea el objeto");
+        }    
     }
     
     public void crearPickUp(){
         autoTune = new AutomovilPickUp(auto);
+        if(autoTune != null){
+            System.out.println("Se crea un auto interfaz Pick Up");
+        }else{
+            System.out.println("No se crea el objeto");
+        }
+            
     }
     
     public double getTotal(){
@@ -66,37 +73,37 @@ public class Controlador {
     }
     
     public void addCamara360(){
-        eqCamaras = new DecCamara360(autoTune);
+        equipamiento = new DecCamara360(autoTune);
         autoTune = new DecCamara360(autoTune);
     }
     
     public void addFrontAssist(){
-        eqFrontAssist = new DecFrontAssist(autoTune);
+        equipamiento = new DecFrontAssist(autoTune);
         autoTune = new DecFrontAssist(autoTune);
     }
 
     public void addNavegador(){
-        eqNavegador = new DecNavegador(autoTune);
+        equipamiento = new DecNavegador(autoTune);
         autoTune = new DecNavegador(autoTune);
     }
 
     public void addParkAssist(){
-        eqParkAssist = new DecParkAssist(autoTune);
+        equipamiento = new DecParkAssist(autoTune);
         autoTune = new DecParkAssist(autoTune);
     }
     
     public void addPintura(){
-        eqPintura = new DecPintura(autoTune);
+        equipamiento = new DecPintura(autoTune);
         autoTune = new DecPintura(autoTune);
     }
 
     public void addRines() {
-        eqRines = new DecRines(autoTune);
+        equipamiento = new DecRines(autoTune);
         autoTune = new DecRines(autoTune);
     }
     
     public void addSeguro() {
-        eqSeguro = new DecSeguro(autoTune);
+        equipamiento = new DecSeguro(autoTune);
         autoTune = new DecSeguro(autoTune);
     }    
     
