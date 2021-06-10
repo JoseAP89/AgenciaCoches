@@ -17,11 +17,7 @@ public class AutomovilPickUp implements IAutomovil{
         this.auto = auto;
     }
     
-    @Override
-    public String getMarca() {
-        return auto.getMarca();
-    }
-    
+
     @Override
     public String ordenarAuto() {
         return "Automovil tipo PickUp";
@@ -29,24 +25,7 @@ public class AutomovilPickUp implements IAutomovil{
 
     @Override
     public double cost() {
-        return auto.getPrice();
-    }
-    
-    
-    
-    @Override
-    public String toString() {
-        return auto.toString();
-    }
-
-    @Override
-    public String getSerie() {
-        return auto.getNum_serie();
-    }
-
-    @Override
-    public float getPrecioBase() {
-        return auto.getPrice();
+        return 526800.00;
     }
     
 }
