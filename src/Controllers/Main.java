@@ -73,7 +73,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        chooseVehicleLbl.setText("Elije el vehiculo que deseas");
+        chooseVehicleLbl.setText("Elige el vehículo que deseas");
 
         vehicleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         vehicleBox.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +117,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        vehicleTab.addTab("Elejir", jPanel2);
+        vehicleTab.addTab("Elegir", jPanel2);
 
         jLabel1.setText("Elija los componentes adicionales de su vehículo");
 
