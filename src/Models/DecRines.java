@@ -34,10 +34,10 @@ public class DecRines extends DecoradorEquipamiento{
     public double getPrecioEquipamiento() {
         return 7370.00;
     }
-    
-    public String getDescripcionEquipamiento() {
-        return "Rines deportivos de ultima generación.";
-    }
 
+    @Override
+    public String getDescipcionEquipamiento() {
+        return "Se agregaron rines";
+    }
     
 }
