@@ -12,7 +12,4 @@ package Models;
 public interface IAutomovil {
     public String ordenarAuto();
     public abstract double cost();
-    public String getMarca();
-    public String getSerie();
-    public float getPrecioBase();
 }
