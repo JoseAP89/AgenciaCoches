@@ -27,7 +27,7 @@ public class DecPintura extends DecoradorEquipamiento{
 
     @Override
     public String getNombreEquipamiento() {
-        return "Pintado";
+        return "Pintura";
     }
 
     @Override
@@ -35,10 +35,9 @@ public class DecPintura extends DecoradorEquipamiento{
         return 12000.00;
     }
 
-
     @Override
-    public String getDescripcionEquipamiento() {
-       return "Pintado personalizado del vehículo.";
+    public String getDescipcionEquipamiento() {
+        return "Se ordeno agregar pintura no estandar";
     }
     
     
