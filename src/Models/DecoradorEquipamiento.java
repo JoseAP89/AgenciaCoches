@@ -20,19 +20,9 @@ public abstract class DecoradorEquipamiento implements IAutomovil {
     public abstract String ordenarAuto();
     
     public abstract String getNombreEquipamiento();
-    public abstract String getDescripcionEquipamiento();
+    
+    public abstract String getDescipcionEquipamiento();
+    
     public abstract double getPrecioEquipamiento();
-    
-    public String getMarca(){
-        return AutoDecorado.getMarca();
-    }
-    
-    public float getPrecioBase(){
-        return AutoDecorado.getPrecioBase();
-    }
-    
-    public String getSerie() {
-        return AutoDecorado.getSerie();
-    }
     
 }
