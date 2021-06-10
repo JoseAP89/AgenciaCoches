@@ -24,18 +24,21 @@ public class DecSeguro extends DecoradorEquipamiento{
     public double cost() {
         return this.getPrecioEquipamiento() + AutoDecorado.cost();
     }
+    
+    @Override
+    public String getDescipcionEquipamiento() {
+        return "Se agrego Seguro de Blindaje total";
+    }
 
     @Override
     public String getNombreEquipamiento() {
-        return "Seguro";
+        return "Seguro de Cobertura Total";
     }
 
     @Override
     public double getPrecioEquipamiento() {
-        return  13303.00;
+        return 13303.00;
     }
     
-    public String getDescripcionEquipamiento() {
-        return "Seguro de cobertura total contra diversos daños.";
-    }
+    
 }
