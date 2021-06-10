@@ -1,5 +1,7 @@
 # Agencia de Coches
 
+![alt text](https://github.com/JoseAP89/AgenciaCoches/blob/joseap/src/Resources/logo.png "Logo Empresa")
+
 **Descripcion**
 
 Es una aplicación sencilla de una agencia de vehículos, donde seleccionas uno y se te presenta la opción de agregarle componentes/accesorios para mejorar su funcionalidad, con un costo extra, por su puesto.
