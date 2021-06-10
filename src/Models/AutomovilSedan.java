@@ -16,11 +16,6 @@ public class AutomovilSedan implements IAutomovil{
     public AutomovilSedan(Automovil auto) {
         this.auto = auto;
     }
-    
-    @Override
-    public String getMarca() {
-        return auto.getMarca();
-    }
 
     @Override
     public String ordenarAuto() {
@@ -29,22 +24,7 @@ public class AutomovilSedan implements IAutomovil{
 
     @Override
     public double cost() {
-        return auto.getPrice();
-    }
-
-    @Override
-    public String toString() {
-        return auto.toString();
-    }
-    
-    @Override
-    public String getSerie() {
-        return auto.getNum_serie();
-    }
-
-    @Override
-    public float getPrecioBase() {
-        return auto.getPrice();
+        return 271900.00;
     }
     
 }
